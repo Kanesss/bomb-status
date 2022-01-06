@@ -55,24 +55,26 @@ function App() {
     <>
       <Card title="Bomb Crypto Server Status PowerBy XapaNFT">
         <h1 className="card-text" style={{ marginLeft: "35px" }}>
+          AllServer: {Number(count).toLocaleString("en")}
+        </h1>
+        <h1 className="card-text" style={{ marginLeft: "35px" }}>
           Total ID: {Number(ccu.ccu).toLocaleString("en")}
         </h1>
         <h1 className="card-text" style={{ marginLeft: "35px" }}>
           Max ID: {Number(ccu.maxCcu).toLocaleString("en")}
         </h1>
+
         <h1 className="card-text" style={{ marginLeft: "35px" }}>
           <Progress
             className="card-text"
             strokeLinecap="square"
             percent={parseFloat((ccu.ccu * 100) / ccu.maxCcu).toFixed(2)}
             style={{ width: "50%" }}
-            strokeColor={
-              ccu.ccu == 0
-                ? "#DE3163"
-                : parseFloat((ccu.ccu * 100) / ccu.maxCcu).toFixed(2) >= 50
-                ? "#FFBF00"
-                : "#9FE2BF"
-            }
+            strokeColor={{
+              "0%": "#9FE2BF",
+              "50%": "#FFBF00",
+              "100%": "#DE3163",
+            }}
           />
         </h1>
 
@@ -102,16 +104,11 @@ function App() {
                         ? 0
                         : parseFloat((props[0] * 100) / props[1]).toFixed(2)
                     }
-                    strokeColor={
-                      props[0] == 0
-                        ? "#DE3163"
-                        : props[0] == 0
-                        ? 0
-                        : parseFloat((props[0] * 100) / props[1]).toFixed(2) >=
-                          50
-                        ? "#FFBF00"
-                        : "#9FE2BF"
-                    }
+                    strokeColor={{
+                      "0%": "#9FE2BF",
+                      "50%": "#FFBF00",
+                      "100%": "#DE3163",
+                    }}
                     style={{ width: "80%" }}
                   />
                 </div>
